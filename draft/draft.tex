@@ -1,4 +1,6 @@
 \documentclass[12pt]{article}
+
+\usepackage{amsmath}
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
 
@@ -6,6 +8,7 @@
 colorlinks=true,
 linkcolor=black
 }
+\numberwithin{equation}{section}
 
 \title{The Draft of MrHeer}
 \author{MrHeer}
@@ -14,25 +17,23 @@ linkcolor=black
 \begin{document}
 
 \begin{titlepage}
-\maketitle
-\thispagestyle{empty}
+    \maketitle
+    \thispagestyle{empty}
 \end{titlepage}
 
 \begin{center}
-\tableofcontents
+    \tableofcontents
 \end{center}
 \pagenumbering{roman}
 
 \newpage
 \pagenumbering{arabic}
 \setcounter{page}{1}
-\section{First}
-First section. This is a simple example, with no 
-extra parameters or packages included.
+\section{Pythagorean}
+The Pythagorean theorem is:
+\begin{equation}
+    a^2 + b^2 = c^2 \label{pythagorean}
+\end{equation}
+Equation \eqref{pythagorean} is called ‘Gougu theorem’ in Chinese.
 
-\newpage
-\section{Second}
-Second section. This is a simple example, with no 
-extra parameters or packages included.
-
-\end{document} 
+\end{document}

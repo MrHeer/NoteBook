@@ -41,12 +41,12 @@ cost to $\sim$$2\lg{F}$.
 \subsection*{Answer}
 $\sim$$\lg{N}$: start at the top, always cut search space in half $\rightarrow$ binary search.\\
 $\sim$$2\lg{F}$: start at 1, next 2, 4, 8 (i.e., $2^i$), once the egg breaks after ($\sim$$\lg{F}$ steps)
-do binary search in the smaller search space (range $\leqslant$ $F$ and hence number of searches $<$ $\sim$$\lg{F}$)
+do binary search in the smaller search space (range $<$ $F$ and hence number of searches $<$ $\sim$$\lg{F}$)
 $\rightarrow$ exponential search.
-\[2^{\lfloor \lg{F} \rfloor} \leqslant F \leqslant 2^{\lceil \lg{F} \rceil}\]
-\[range = 2^{\lceil \lg{F} \rceil} - 2^{\lfloor \lg{F} \rfloor}
-= \{0, 2^{\lfloor \lg{F} \rfloor}\} \leqslant 2^{\lg{F}} = F\]
-\[range \leqslant F\]
+\[2^{\lceil \lg{F} \rceil - 1} < F \leqslant 2^{\lceil \lg{F} \rceil}\]
+\[range = 2^{\lceil \lg{F} \rceil} - 2^{\lceil \lg{F} \rceil - 1}
+= 2^{\lceil \lg{F} \rceil - 1} < 2^{\lg{F}} = F\]
+\[range < F\]
 
 \newpage
 \section{Throwing two eggs from a building}

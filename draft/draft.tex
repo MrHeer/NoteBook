@@ -57,29 +57,29 @@ a strategy to determine $F$ such that the number of throws is at most $2\sqrt{N}
 way to reduce the cost to $\sim$$c\sqrt{F}$. This is analogous to a situation where search hits (egg
 intact) are much cheaper than misses (egg broken).
 \subsection*{Answer}
-Let us make our first attempt on $x$'th floor.
-If it breaks, we try remaining $(x-1)$ floors one by one. 
-So in worst case, we make $x$ trials.
-If it doesn’t break, we jump $(x-1)$ floors (Because we have
+Let us make our first attempt on $k$'th floor.
+If it breaks, we try remaining $(k-1)$ floors one by one. 
+So in worst case, we make $k$ trials.
+If it doesn’t break, we jump $(k-1)$ floors (Because we have
 already made one attempt and we don't want to go beyond 
-$x$ attempts.  Therefore $(x-1)$ attempts are available),
-Next floor we try is floor $x + (x-1)$
+$k$ attempts. Therefore $(k-1)$ attempts are available),
+Next floor we try is floor $k + (k-1)$
 Similarly, if this drop does not break, next need to jump 
-up to floor $x + (x-1) + (x-2)$, then $x + (x-1) + (x-2) + (x-3)$
+up to floor $k + (k-1) + (k-2)$, then $k + (k-1) + (k-2) + (k-3)$
 and so on.
-Since the last floor to be tried is $N$'th floor, sum of
-series should be $N$ for optimal value of $x$.
-\[x + (x-1) + (x-2) + (x-3) + \cdots + 1 \geqslant N\]
-\[\frac{x(x+1)}{2} \geqslant N\]
-\[x \geqslant \frac{\sqrt{8N+1}-1}{2}\]
-\[x_{min} = \lceil \frac{\sqrt{8N+1}-1}{2} \rceil \sim \sqrt{2N}\] 
-The egg is broken if it is thrown off floor $F$ or higher
-\[x + (x-1) + (x-2) + (x-3) + \cdots \geqslant F\]
-Therefore, we start trying from 14'th floor. If Egg breaks
-we one by one try remaining 13 floors.  If egg doesn't break
-we go to 27th floor.
-If egg breaks on 27'th floor, we try floors form 15 to 26.
-If egg doesn't break on 27'th floor, we go to 39'th floor.
-An so on...
+Since the last floor to be tried is $F$'th floor, sum of
+series should be $F$ for optimal value of $k$.
+\[k + (k-1) + (k-2) + (k-3) + \cdots + 1 \geqslant F\]
+\[\frac{k(k+1)}{2} \geqslant F\]
+\[k \geqslant \frac{\sqrt{8F+1}-1}{2}\]
+\[k_{min} = \lceil \frac{\sqrt{8F+1}-1}{2} \rceil \sim \sqrt{2F}\] 
+\subsubsection*{Official solution}
+Solution to Part 1: To achieve $2\sqrt{N}$, drop eggs at floors $\sqrt{N}$,
+$2*\sqrt{N}$, $3*\sqrt{N}$, ..., $\sqrt{N}\sqrt{N}$. (For simplicity, we assume
+here that $\sqrt{N}$ is an integer.) Let assume that the egg broke at level
+$k\sqrt{N}$. With the second egg you should then perform a linear search in the
+interval $(k-1)\sqrt{N}$ to $k\sqrt{N}$. In total you will be able to find the
+floor $F$ in at most $2\sqrt{N}$ trials.\\
+Hint for Part 2: $1 + 2 + 3 + \cdots + k \sim \frac{1}{2}k^2 \geqslant F$. 
 
 \end{document}

@@ -1,5 +1,6 @@
 \documentclass[12pt]{article}
 
+\usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[utf8]{inputenc}
@@ -81,5 +82,27 @@ $k\sqrt{N}$. With the second egg you should then perform a linear search in the
 interval $(k-1)\sqrt{N}$ to $k\sqrt{N}$. In total you will be able to find the
 floor $F$ in at most $2\sqrt{N}$ trials.\\
 Hint for Part 2: $1 + 2 + 3 + \cdots + k \sim \frac{1}{2}k^2 \geqslant F$. 
+
+\newpage
+\section{3-collinearity}
+\subsection*{Question}
+Suppose that you have an algorithm that takes as input $N$ distinct
+points in the plane and can return the number of triples that fall on the same line.
+Show that you can use this algorithm to solve the 3-sum problem. Strong hint: Use
+algebra to show that $(a, a^3)$, $(b, b^3)$, and $(c, c^3)$ are collinear if and only if $a + b + c = 0$.
+\subsection*{Answer}
+\begin{proof}
+    $(a, a^3)$, $(b, b^3)$, and $(c, c^3)$ are collinear if and only if $a + b + c = 0$: \\
+    We use a formulation of collinearity which equates gradients (assuming our points are distinct) 
+    \[\frac{y_2-y_1}{x_2-x_1}=\frac{y_3-y_1}{x_3-x_1}\]
+    This becomes
+    \[\frac{b^3-a^3}{b-a}=\frac{c^3-a^3}{c-a}\]
+    which leaves us with
+    \[b^2+ab+a^2=c^2+ac+a^2\]
+    so that
+    \[b^2-c^2=a(c-b)\]
+    $c \neq b$ so we have $a=-(b+c)$
+    \[a+b+c=0\]
+\end{proof}
 
 \end{document}

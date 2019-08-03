@@ -2,6 +2,7 @@
 % !TEX options = --shell-escape -synctex=1 -interaction=nonstopmode -file-line-error "%DOC%"
 \documentclass[12pt]{article}
 
+\usepackage[ruled]{algorithm2e}
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -77,7 +78,7 @@ series should be $F$ for optimal value of $k$.
 \[\frac{k(k+1)}{2} \geqslant F\]
 \[k \geqslant \frac{\sqrt{8F+1}-1}{2}\]
 \[k_{min} = \lceil \frac{\sqrt{8F+1}-1}{2} \rceil \sim \sqrt{2F}\] 
-\subsubsection*{Official solution}
+\subsection*{Official solution}
 Solution to Part 1: To achieve $2\sqrt{N}$, drop eggs at floors $\sqrt{N}$,
 $2*\sqrt{N}$, $3*\sqrt{N}$, ..., $\sqrt{N}\sqrt{N}$. (For simplicity, we assume
 here that $\sqrt{N}$ is an integer.) Let assume that the egg broke at level
@@ -123,6 +124,40 @@ operation takes a constant amortized number of stack operations. Hint: If you pu
 elements onto a stack and then pop them all, they appear in reverse order. If you repeat
 this process, they’re now back in order.
 \subsection*{Answer}
+\begin{algorithm}
+    \NoCaptionOfAlgo
+    \caption{Transfer}
+    \KwResult{stack1 to stack2 and reverse order}
+    \While{stack1 is not empty}{
+        Item tmp = stack1.pop()\;
+        stack2.push(tmp);
+    }
+\end{algorithm}
+
+\begin{algorithm}
+    \NoCaptionOfAlgo
+    \caption{Enqueue}
+    \KwIn{element item}
+    \KwResult{enqueue}
+    stack1.push(item);
+\end{algorithm}
+
+\begin{algorithm}
+    \NoCaptionOfAlgo
+    \caption{Dequeue}
+    \KwResult{dequeue}
+    \If{queue is empty}{
+        throw NoSuchElementException;
+    }
+    \If{stack2 is empty}{
+        transfer();
+    }
+    \Return stack2.pop();
+\end{algorithm}
+
+\subsection*{Code}
 \inputminted{java}{QueueWithTwoStacks.java}
+
+\subsection*{Analysis}
 
 \end{document}

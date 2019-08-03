@@ -1,3 +1,5 @@
+% !TEX program = pdflatex
+% !TEX options = --shell-escape -synctex=1 -interaction=nonstopmode -file-line-error "%DOC%"
 \documentclass[12pt]{article}
 
 \usepackage{amsthm}
@@ -5,6 +7,7 @@
 \usepackage{amssymb}
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
+\usepackage{minted}
 
 \hypersetup{
 colorlinks=true,
@@ -115,10 +118,11 @@ queue operation takes a constant (worst-case) number of stack operations.
 \newpage
 \section{Queue with two stacks}
 \subsection*{Question}
-\subsection*{Answer}
 Implement a queue with two stacks so that each queue
 operation takes a constant amortized number of stack operations. Hint: If you push
 elements onto a stack and then pop them all, they appear in reverse order. If you repeat
 this process, they’re now back in order.
+\subsection*{Answer}
+\inputminted{java}{QueueWithTwoStacks.java}
 
 \end{document}

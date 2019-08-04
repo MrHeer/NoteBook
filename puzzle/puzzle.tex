@@ -159,5 +159,12 @@ this process, they’re now back in order.
 \inputminted{java}{QueueWithTwoStacks.java}
 
 \subsection*{Analysis}
+For $N$ items enqueue and dequeue.\\
+enqueue: $N$ times push operations.\\
+dequeue:\\
+\indent transfer: $N$ times pop and $N$ times push  operations.\\
+\indent dequeue: $N$ times pop operations.\\
+total: $4N$ times stack operations.\\
+So, the amortized number of stack operations is $\frac{4N}{N}=4$
 
 \end{document}

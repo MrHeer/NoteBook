@@ -190,11 +190,55 @@ guess integers between 1 and $N$. After each guess you learn if your guess equal
 secret integer (and the game stops). Otherwise, you learn if the guess is hotter (closer to)
 or colder (farther from) the secret number than your previous guess. Design an algorithm
 that finds the secret number in at most $\sim$$2\lg{N}$ guesses. Then design an algorithm
-that finds the secret number in at most $\sim$$1\lg{N}$ guesses.
+that finds the secret number in at most $\sim$$1\lg{N}$ guesses.\\
+Hint: use binary search for the first part. For the second part, first design an algorithm
+that solves the problem in $\sim$$1\lg{N}$ guesses assuming you are permitted to guess integers in
+the range $-N$ to $2N$.
 \subsection*{Answer}
 $\sim$$2\lg{N}$: Suppose the secret between $[a, b]$, $mid=\frac{a+b}{2}$. First geuess $a$, then geuss $b$,
 if $b$ hotter $a$, geuess $[mid, b]$, else guess $[a, mid]$...\\
 $\sim$$1\lg{N}$: Suppose you know that your secret integer is in $[a,b]$, and that your last guess is $c$.
 You want to divide your interval by two, and to know whether your secret integer lies in between $[a, m]$ or
 $[m, b]$, with $m=\frac{a+b}{2}$. The trick is to guess $d$, such that $\frac{c+d}{2}=\frac{a+b}{2}$.
+\begin{proof}
+    guess integers in the range $-N$ to $2N$:\\
+    Suppose you know that your secret integer is in $[a_i,b_i]$, $b_i-a_i=d_i$, your last guess
+    is $g_{i-1}$, this guess is $g_i$, and $\frac{g_i+g_{i-1}}{2}=\frac{a_i+b_i}{2}=m_i$.
+    \[g_i+g_{i-1}=2m_i \tag{1}\label{8.1}\]
+    \[g_{i-1}+g_{i-2}=2m_{i-1} \tag{2}\label{8.2}\]
+    $\eqref{8.1}-\eqref{8.2}$
+    \[g_{i}-g_{i-2}=2(m_i-m_{i-1})\]
+    We know that $\mid m_i-m_{i-1} \mid = \frac{d_i}{2}$
+    \[\mid g_{i}-g_{i-2}\mid=d_i\]
+    Because divide interval by two everytime
+    \[d_i=\frac{1}{2}d_{i-1}\]
+    We want to know the $g_{max}$, so $i$ is even and $g_i>g_{i-2}$
+    \[g_2-g_0=\frac{1}{2}d_1 \tag{1}\label{8.3}\]
+    \[g_4-g_2=\frac{1}{8}d_1 \tag{2}\label{8.4}\]
+    \[\cdots\]
+    \[g_i-g_{i-2}=\frac{1}{2^{i-1}}d_1 \tag{$\frac{i}{2}$}\label{8.5}\]
+    $\eqref{8.3}+\eqref{8.4}+\cdots+\eqref{8.5}$
+    \begin{align*}
+    g_i-g_0&=(\frac{1}{2}+\frac{1}{8}+\cdots+\frac{1}{2^{i-1}})d_1\\
+    &=\frac{2}{3}(1-\frac{1}{2^i})d_1\\
+    &=\frac{2}{3}(1-\frac{1}{2^i})(N-1)
+    \end{align*}
+    \[g_i=\frac{2}{3}(1-\frac{1}{2^i})(N-1)+g_0\]
+    When $g_0=N$
+    \begin{align*}
+    g_{max}&=\lim_{i\to\infty}\frac{2}{3}(1-\frac{1}{2^i})(N-1)+N\\
+    &=\frac{2}{3}(N-1)+N
+    \end{align*}
+    \[g_{max}<2N\]
+    The same reason
+    \[g_i=g_0-\frac{2}{3}(1-\frac{1}{2^i})(N-1)\]
+    When $g_0=1$
+    \begin{align*}
+    g_{max}&=\lim_{i\to\infty}1-\frac{2}{3}(1-\frac{1}{2^i})(N-1)\\
+    &=1-\frac{2}{3}(N-1)
+    \end{align*}
+    \[g_{min}>-N\]
+    So, guess integers in the range $-N$ to $2N$.
+\end{proof}
+
 \end{document}

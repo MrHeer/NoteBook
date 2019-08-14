@@ -238,7 +238,13 @@ $[m, b]$, with $m=\frac{a+b}{2}$. The trick is to guess $d$, such that $\frac{c+
     &=1-\frac{2}{3}(N-1)
     \end{align*}
     \[g_{min}>-N\]
-    So, guess integers in the range $-N$ to $2N$.
+    So, guess integers in the range $-N$ to $2N$.\\
+    Of course, we can also use mathematical induction to prove.\\
+    Suppose $a_i-b_i < g_{i-1} < 2b_i$, because $\frac{g_i+g_{i-1}}{2}=\frac{a_i+b_i}{2}$, so
+    \[a_i-b_i < g_i < 2b_i\]
+    We know $1 \leqslant a_i \leqslant b_i \leqslant N$
+    \[1-N < g_i < 2N\]
+    So, guess integers in the range $-N$ to $2N$.\\
 \end{proof}
 
 \end{document}

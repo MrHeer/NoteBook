@@ -266,4 +266,20 @@ the values are uniformly distributed between $-M$ and $M$,
 where $M$ is not small.
 \subsection*{Answer}
 
+\newpage
+\section{Birthday problem [Unsolved]}
+\subsection*{Question}
+Write a program that takes an integer $N$ from the command
+line and uses \mintinline{java}{StdRandom.uniform()} to generate a random sequence of integers
+between 0 and $N-1$. Run experiments to validate the hypothesis that the number of
+integers generated before the first repeated value is found is $\sim$$\sqrt{\frac{N}{2}\pi}$.
+\subsection*{Answer}
+We can use \mintinline{java}{BitSet.get(next)} to determine if $next$ appears.
+\subsection*{Code}
+\inputminted{java}{BirthdayProblem.java}
+\begin{proof}
+    the number of integers generated before the first repeated
+    value is found is $\sim$$\sqrt{\frac{N}{2}\pi}$.
+\end{proof}
+
 \end{document}

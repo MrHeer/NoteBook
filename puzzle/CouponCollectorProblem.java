@@ -1,9 +1,11 @@
-public class BirthdayProblem {
-    private static int findFirstRepeat(int N) {
+public class CouponCollectorProblem {
+    private static int findAllRepeat(int N) {
         BitSet bitSet = new BitSet(N);
+        BitSet fullBitSet = new BitSet(N);
+        fullBitSet.flip(0, N);
         int next = StdRandom.uniform(N);
         int count = 0;
-        while (!bitSet.get(next)) {
+        while (!bitSet.equals(fullBitSet)) {
             bitSet.set(next);
             next = StdRandom.uniform(N);
             count++;
@@ -17,7 +19,7 @@ public class BirthdayProblem {
         int countTest = 0;
         double avg = 0;
         while (true) {
-            count = findFirstRepeat(N);
+            count = findAllRepeat(N);
             countTest++;
             avg = avg + (count - avg) / countTest;
             StdOut.println(avg);

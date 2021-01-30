@@ -1,0 +1,35 @@
+\section{Throwing two eggs from a building}
+
+\subsection*{Question}
+Consider the previous question, but now
+suppose you only have two eggs, and your cost model is the number of throws. Devise
+a strategy to determine $F$ such that the number of throws is at most $2\sqrt{N}$, then find a
+way to reduce the cost to $\sim c\sqrt{F}$. This is analogous to a situation where search hits (egg
+intact) are much cheaper than misses (egg broken).
+
+\subsection*{Answer}
+Let us make our first attempt on $k$'th floor.
+If it breaks, we try remaining $(k-1)$ floors one by one. 
+So in worst case, we make $k$ trials.
+If it doesn’t break, we jump $(k-1)$ floors (Because we have
+already made one attempt and we don't want to go beyond 
+$k$ attempts. Therefore $(k-1)$ attempts are available),
+Next floor we try is floor $k + (k-1)$
+Similarly, if this drop does not break, next need to jump 
+up to floor $k + (k-1) + (k-2)$, then $k + (k-1) + (k-2) + (k-3)$
+and so on.
+Since the last floor to be tried is $F$'th floor, sum of
+series should be $F$ for optimal value of $k$.
+\[k + (k-1) + (k-2) + (k-3) + \cdots + 1 \geqslant F\]
+\[\frac{k(k+1)}{2} \geqslant F\]
+\[k \geqslant \frac{\sqrt{8F+1}-1}{2}\]
+\[k_{\min} = \lceil \frac{\sqrt{8F+1}-1}{2} \rceil \sim \sqrt{2F}\] 
+
+\subsection*{Official solution}
+Solution to Part 1: To achieve $2\sqrt{N}$, drop eggs at floors $\sqrt{N}$,
+$2*\sqrt{N}$, $3*\sqrt{N}$, \ldots, $\sqrt{N}\sqrt{N}$. (For simplicity, we assume
+here that $\sqrt{N}$ is an integer.) Let assume that the egg broke at level
+$k\sqrt{N}$. With the second egg you should then perform a linear search in the
+interval $(k-1)\sqrt{N}$ to $k\sqrt{N}$. In total you will be able to find the
+floor $F$ in at most $2\sqrt{N}$ trials.\\
+Hint for Part 2: $1 + 2 + 3 + \cdots + k \sim \frac{1}{2}k^2 \geqslant F$. 

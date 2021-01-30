@@ -1,0 +1,48 @@
+\section{Queue with two stacks}
+
+\subsection*{Question}
+Implement a queue with two stacks so that each queue
+operation takes a constant amortized number of stack operations. Hint: If you push
+elements onto a stack and then pop them all, they appear in reverse order. If you repeat
+this process, they’re now back in order.
+
+\subsection*{Answer}
+\begin{algorithm}
+    \caption{Transfer}
+    \KwResult{stack1 to stack2 and reverse order}
+    \While{stack1 is not empty}{
+        $tmp \leftarrow stack1.pop()$\;
+        $stack2.push(tmp)$;
+    }
+\end{algorithm}
+
+\begin{algorithm}
+    \caption{Enqueue}
+    \KwIn{element item}
+    \KwResult{enqueue}
+    $stack1.push(item)$;
+\end{algorithm}
+
+\begin{algorithm}
+    \caption{Dequeue}
+    \KwResult{dequeue}
+    \If{queue is empty}{
+        throw NoSuchElementException;
+    }
+    \If{stack2 is empty}{
+        $transfer()$;
+    }
+    \Return{$stack2.pop()$;}
+\end{algorithm}
+
+\subsection*{Code}
+\inputminted{java}{puzzles/queue_with_two_stacks/QueueWithTwoStacks.java}
+
+\subsection*{Analysis}
+For $N$ items enqueue and dequeue.\\
+enqueue: $N$ times push operations.\\
+dequeue:\\
+\indent transfer: $N$ times pop and $N$ times push  operations.\\
+\indent dequeue: $N$ times pop operations.\\
+total: $4N$ times stack operations.\\
+So, the amortized number of stack operations is $\frac{4N}{N}=4$
